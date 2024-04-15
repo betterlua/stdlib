@@ -1,0 +1,12 @@
+[package]
+name = "stdlib"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+fluent-uri = "0.1.4"
+mlua = { version = "0.9.7", features = ["lua54", "module", "serialize"] }
+serde = { version = "1.0.197", features = ["derive"] }

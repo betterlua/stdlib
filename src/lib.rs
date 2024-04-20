@@ -1,8 +1,11 @@
 use mlua::prelude::*;
 mod env;
 mod filesystem;
+mod process;
+mod types;
 
-fn import(lua: &Lua, name: String) -> LuaResult<()> {
+fn import(_: &Lua, name: String) -> LuaResult<()> {
+    println!("import {}", name);
     Ok(())
 }
 
@@ -11,9 +14,12 @@ fn stdlib(lua: &Lua) -> LuaResult<LuaTable> {
     let exports = lua.create_table_from([
         ("filesystem", filesystem::module(lua)?),
         ("env", env::module(lua)?),
+        ("process", process::module(lua)?),
+        ("types", types::module(lua)?),
     ])?;
 
-    exports.set("import", lua.create_function(import)?)?;
+    lua.globals().set("import", lua.create_function(import)?)?;
+
 
     Ok(exports)
 }

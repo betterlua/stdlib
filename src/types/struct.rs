@@ -55,7 +55,9 @@ pub fn r#struct(
 
         obj.insert("__stdlib_type".to_string(), lua.to_value("__stdlib_type_struct__")?);
 
-        Ok(obj)
+        let table: mlua::Table = lua.create_table_from(obj)?;
+
+        Ok(table)
     })?;
 
     Ok(r#struct)

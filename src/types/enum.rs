@@ -79,7 +79,7 @@ pub fn r#enum(lua: &mlua::Lua, values: Vec<EnumType>) -> mlua::Result<mlua::Tabl
                             }
                         }
 
-
+                        println!("obj {:?}", obj);
 
                         Ok(obj)
                     })?,
@@ -88,5 +88,6 @@ pub fn r#enum(lua: &mlua::Lua, values: Vec<EnumType>) -> mlua::Result<mlua::Tabl
         }
     }
     table.set("__stdlib_type", lua.to_value("__stdlib_type_enum__")?)?;
+
     Ok(table)
 }

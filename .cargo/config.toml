@@ -1,3 +1,6 @@
+[build]
+incremental = true
+
 [target.x86_64-apple-darwin]
 rustflags = [
   "-C", "link-arg=-undefined",

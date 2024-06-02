@@ -73,8 +73,6 @@ pub fn module(lua: &mlua::Lua) -> mlua::Result<mlua::Table> {
     exports.set("number", Type::NUMBER)?;
     exports.set("boolean", Type::BOOLEAN)?;
     exports.set("table", Type::TABLE)?;
-    // exports.set("enum", Type::ENUM)?;
-    // exports.set("struct", Type::r#struct)?;
     exports.set("nil", Type::NIL)?;
     exports.set("struct", lua.create_function(r#struct::r#struct)?)?;
     exports.set("enum", lua.create_function(r#enum::r#enum)?)?;

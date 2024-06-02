@@ -14,7 +14,7 @@ pub fn process_abort(_: &mlua::Lua, _: ()) -> mlua::Result<()> {
 
 pub fn module(lua: &mlua::Lua) -> mlua::Result<mlua::Table> {
     let exports = lua.create_table()?;
-    exports.set("proc_id", lua.create_function(process_proc_id)?)?;
+    exports.set("id", lua.create_function(process_proc_id)?)?;
     exports.set("exit", lua.create_function(process_exit)?)?;
     exports.set("abort", lua.create_function(process_abort)?)?;
     Ok(exports)

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LIB_PATH=/home/arif/Projects/betterlua/stdlib/target/debug/lib?.so
+
+LUA_CPATH=$LIB_PATH LUA_PATH=lua/?/init.lua lua $@

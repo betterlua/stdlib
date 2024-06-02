@@ -2,36 +2,15 @@ use std::fs;
 
 use mlua::Table;
 
-fn read_file(lua: &mlua::Lua, path: String) -> mlua::Result<Table> {
-    let contents = fs::read(path);
+fn read_file(_: &mlua::Lua, path: String) -> mlua::Result<String> {
+    let contents = fs::read_to_string(path);
+
     let contents = match contents {
-        Ok(contents) => contents,
-        Err(err) => return Err(mlua::Error::external(err)),
+        Ok(contents) => Ok(contents),
+        Err(err) => Err(mlua::Error::external(err)),
     };
 
-    let contents_clone = contents.clone();
-
-    let table = lua.create_table()?;
-
-    let string = lua
-        .create_function(move |_, _: ()| {
-            let contents = contents.clone();
-            let string = String::from_utf8(contents).unwrap();
-            Ok(string)
-        })
-        .unwrap();
-
-    let bytes = lua
-        .create_function(move |_, _: ()| {
-            let contents = contents_clone.clone();
-            Ok(contents)
-        })
-        .unwrap();
-
-    table.set("string", string)?;
-    table.set("bytes", bytes)?;
-
-    Ok(table)
+    contents
 }
 
 fn read_dir(lua: &mlua::Lua, path: String) -> mlua::Result<Table> {

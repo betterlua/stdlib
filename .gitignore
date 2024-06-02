@@ -1,3 +1,7 @@
 /target
-/test
+/.vscode
 
+/lua/luarocks
+/lua/lua
+/lua/lua_modules
+/lua/.luarocks

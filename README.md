@@ -195,7 +195,7 @@ local dll_prefix = consts.dll_prefix --- lib | ""
 
 ### Process
 
-#### proc_id()
+#### id()
 ```lua
 local proc = require("stdlib.process")
 
@@ -216,43 +216,6 @@ local proc = require("stdlib.process")
 proc.abort()
 ```
 
-### Types
-
-#### string
-
-#### number
-
-#### boolean
-
-#### table
-
-#### function
-
-#### nil
-
-#### struct { ... }
-```lua
-local types = require("stdlib.types")
-
-local MyStruct = types.struct {
-    str = types.string,
-    number = types.number,
-    bool = types.boolean
-}
-
-```
-
-#### enum { ... }
-```lua
-local types = require("stdlib.types")
-
-local MyEnum = types.enum {
-    { "A", 1 },
-    { "B", 2 }
-    { "C", 3 }
-    { "D", 4 }
-}
-```
 
 ## Roadmap
 
